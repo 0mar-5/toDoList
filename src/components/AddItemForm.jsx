@@ -3,7 +3,7 @@ function AddItemForm() {
   return (
     <form>
       <input type="text" id="item" placeholder="add item..." />
-      <Button>ADD</Button>
+      <Button type="primery">ADD</Button>
     </form>
   );
 }

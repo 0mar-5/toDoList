@@ -1,7 +1,12 @@
+import ContralButtons from "./ContralButtons";
+
 function List() {
   return (
     <ul>
-      <li>Task 1</li>
+      <li>
+        <span>Task 1</span>
+        <ContralButtons />
+      </li>
       <li>Task 2</li>
     </ul>
   );

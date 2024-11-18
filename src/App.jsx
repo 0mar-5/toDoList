@@ -18,7 +18,7 @@ function App() {
     <Container>
       <Header />
       <AddItemForm onAddItem={addItemHandler} />
-      <List items={itemsData} />
+      <List items={itemsData} onDelete={setItemsData} />
     </Container>
   );
 }

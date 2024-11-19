@@ -8,7 +8,7 @@ function App() {
   const [itemvalue, setItemValue] = useState("");
   const [itemsData, setItemsData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-
+  const [isDone, setIsDone] = useState(false);
   const addItemHandler = function (enteredItem) {
     //to pass data to list Component
     setItemsData((prevItem = []) => {
@@ -32,6 +32,15 @@ function App() {
     );
   };
 
+  const handelToggleItem = function (e) {
+    setIsDone((done) => !done);
+    setItemsData(() =>
+      itemsData.map((item) =>
+        item.id === e.target.id ? { ...item, done: isDone } : item
+      )
+    );
+  };
+
   return (
     <Container>
       <Header />
@@ -46,6 +55,7 @@ function App() {
         onDelete={deleteHandler}
         onEdit={editHandler}
         isEditing={isEditing}
+        onToggleItem={handelToggleItem}
       />
     </Container>
   );

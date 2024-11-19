@@ -1,6 +1,6 @@
 import ListItem from "./ListItem";
 
-function List({ items = [], onDelete, onEdit, isEditing }) {
+function List({ items = [], onDelete, onEdit, isEditing, onToggleItem }) {
   return (
     <ul>
       {items?.length === 0 ? (
@@ -14,6 +14,8 @@ function List({ items = [], onDelete, onEdit, isEditing }) {
             onDelete={onDelete}
             onEdit={onEdit}
             isEditing={isEditing}
+            isDone={item.done}
+            onToggleItem={onToggleItem}
           />
         ))
       )}

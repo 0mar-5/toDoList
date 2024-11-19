@@ -1,11 +1,30 @@
 import Button from "./Ui/Button";
 
-function ListItem({ item, id, onDelete, onEdit, isEditing }) {
+function ListItem({
+  item,
+  id,
+  onDelete,
+  onEdit,
+  isEditing,
+  isDone,
+  onToggleItem,
+}) {
   return (
     <li>
-      <span>{item}</span>
+      <span
+        style={isDone ? { textDecoration: "line-through", color: "green" } : {}}
+      >
+        {item}
+      </span>
 
       <div className="btn-group">
+        <button
+          className="btn btn-secondry"
+          id={id}
+          onClick={(e) => onToggleItem(e)}
+        >
+          {isDone ? "Undo" : "Done"}
+        </button>
         <Button
           onDelete={onDelete}
           type="deleting"

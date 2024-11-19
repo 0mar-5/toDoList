@@ -71,7 +71,8 @@ ul li {
   align-items: center;
   justify-content: space-between;
 }
-ul li:hover {
+
+ul li:hover:not(:has(*:hover)) {
   background: #90a4ae;
 }
 .btn-group {

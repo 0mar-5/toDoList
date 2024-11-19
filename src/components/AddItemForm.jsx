@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import Button from "./Ui/Button";
 
 function AddItemForm({ onAddItem, itemvalue, setItemValue, isEditing }) {
@@ -10,7 +9,7 @@ function AddItemForm({ onAddItem, itemvalue, setItemValue, isEditing }) {
   const submitHandler = function (e) {
     e.preventDefault();
     if (itemvalue.length === 0) return;
-    const itemsList = { itemvalue, id: Math.random().toString() };
+    const itemsList = { itemvalue, id: Math.random().toString(), done: false };
     // console.log(itemsList);
     // lift items List to the app Component .
     onAddItem(itemsList);
@@ -27,7 +26,7 @@ function AddItemForm({ onAddItem, itemvalue, setItemValue, isEditing }) {
         onChange={itemHandler}
       />
       <Button styleType="primery" disabled={isEditing}>
-        ADD
+        {isEditing ? "Editing..." : "ADD"}
       </Button>
     </form>
   );

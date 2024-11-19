@@ -1,30 +1,34 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Button from "./Ui/Button";
 
-function AddItemForm({ onAddItem }) {
-  const [item, setItem] = useState("");
-
+function AddItemForm({ onAddItem, itemvalue, setItemValue, isEditing }) {
+  // const [itemvalue, setItemValue] = useState("");
   const itemHandler = function (e) {
-    setItem(e.target.value);
+    setItemValue(e.target.value);
   };
+
   const submitHandler = function (e) {
     e.preventDefault();
-    if (item.length === 0) return;
-    const itemsList = { item, id: Math.random().toString() };
-    // lift itemsList to the app Component .
+    if (itemvalue.length === 0) return;
+    const itemsList = { itemvalue, id: Math.random().toString() };
+    // console.log(itemsList);
+    // lift items List to the app Component .
     onAddItem(itemsList);
-    setItem("");
+    setItemValue("");
   };
+
   return (
     <form onSubmit={submitHandler}>
       <input
         type="text"
         id="item"
-        placeholder="add item..."
-        value={item}
+        placeholder={isEditing ? "Edit item" : "add item..."}
+        value={itemvalue}
         onChange={itemHandler}
       />
-      <Button type="primery">ADD</Button>
+      <Button styleType="primery" disabled={isEditing}>
+        ADD
+      </Button>
     </form>
   );
 }

@@ -1,10 +1,22 @@
-import React from "react";
-function Button({ children, type, onClick, id }) {
+function Button({
+  children,
+  styleType,
+  onDelete,
+  onEdite,
+  id,
+  type,
+  value,
+  disabled,
+}) {
   return (
     <button
       id={id}
-      onClick={onClick}
-      className={`btn ${type === "primery" ? "btn-primery" : "btn-secondry"}`}
+      value={value}
+      disabled={disabled}
+      onClick={type === "deleting" ? onDelete : onEdite}
+      className={`btn ${
+        styleType === "primery" ? "btn-primery" : "btn-secondry"
+      }`}
     >
       {children}
     </button>

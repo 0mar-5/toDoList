@@ -22,6 +22,7 @@ function ListItem({
           className="btn btn-secondry"
           id={id}
           onClick={(e) => onToggleItem(e)}
+          disabled={isEditing}
         >
           {isDone ? "Undo" : "Done"}
         </button>

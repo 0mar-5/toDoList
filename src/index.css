@@ -43,6 +43,9 @@ h2 {
   color: #263238;
   background-color: #ef5350;
 }
+[disabled] {
+  cursor: not-allowed;
+}
 input[type="text"] {
   width: 100%;
   padding: 12px;

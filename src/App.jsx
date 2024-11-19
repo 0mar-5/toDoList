@@ -8,7 +8,7 @@ function App() {
   const [itemvalue, setItemValue] = useState("");
   const [itemsData, setItemsData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [isDone, setIsDone] = useState(false);
+
   const addItemHandler = function (enteredItem) {
     //to pass data to list Component
     setItemsData((prevItem = []) => {
@@ -17,14 +17,12 @@ function App() {
   };
 
   const deleteHandler = function (event) {
-    // console.log(event.target.id);
-    // console.log(items);
     setItemsData(itemsData.filter((item) => item.id !== event.target.id));
   };
 
   const editHandler = function (e) {
     setItemValue(e.target.value);
-    setIsEditing((edit) => !edit);
+    setIsEditing(!isEditing);
     setItemsData(() =>
       itemsData.map((item) =>
         item.id === e.target.id ? { ...item, itemvalue: itemvalue } : item
@@ -33,10 +31,9 @@ function App() {
   };
 
   const handelToggleItem = function (e) {
-    setIsDone((done) => !done);
     setItemsData(() =>
       itemsData.map((item) =>
-        item.id === e.target.id ? { ...item, done: isDone } : item
+        item.id === e.target.id ? { ...item, done: !item.done } : item
       )
     );
   };
